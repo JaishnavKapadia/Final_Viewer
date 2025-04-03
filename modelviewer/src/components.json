@@ -1,0 +1,13 @@
+{
+    "rbc": {
+      "label": "Red Blood Cell",
+      "folder": "rbc",
+      "thumbnail": "/thumbnails/rbc.png"
+    },
+    "wbc": {
+      "label": "White Blood Cell",
+      "folder": "wbc",
+      "thumbnail": "/thumbnails/wbc.png"
+    }
+  }
+  

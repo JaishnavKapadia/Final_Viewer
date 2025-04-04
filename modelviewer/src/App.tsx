@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, useGLTF } from "@react-three/drei";
+import { OrbitControls, useGLTF, Environment } from "@react-three/drei";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Menu } from "lucide-react";
@@ -123,9 +123,15 @@ export default function RBCViewer() {
           </Button>
         </div>
         <Canvas camera={{ position: [0, 0, 2.5], fov: 50 }}>
-          <ambientLight intensity={1.5} />
+          <ambientLight intensity={0.5} />
           <directionalLight position={[3, 3, 3]} intensity={1} />
           <OrbitControls autoRotate={autoRotate} />
+          {/* <Environment preset="forest" background /> */}
+          <Environment
+            background
+            files="/hdr/mud_road_puresky_1k.hdr"
+            path=""
+          />
           {selectedModel && currentModel && modelConfig && (
             <RBCModel url={modelConfig.basePath + currentModel.file} opacity={1} />
           )}
@@ -135,6 +141,11 @@ export default function RBCViewer() {
   );
 }
 
+
 Object.values(MODEL_PATHS).forEach(model => {
   useGLTF.preload(model.basePath + model.models[0].file);
+  useGLTF.preload(model.basePath + model.models[1].file);
+  useGLTF.preload(model.basePath + model.models[2].file);
+  useGLTF.preload(model.basePath + model.models[3].file);
+  useGLTF.preload(model.basePath + model.models[4].file);
 });
